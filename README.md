@@ -19,6 +19,9 @@ An in-depth paragraph about your project and overview of use.
 * ex. Windows 10
 * List pip install instructions.
 
+### Pip install instructions
+pip install -r requirements.txt
+
 ### Installing
 
 * How/where to download your program
