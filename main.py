@@ -26,9 +26,11 @@
 import yfinance as yf
 import numpy as np
 import matplotlib.pyplot as plt
+import copy
 
 # Function to gather stock information
 def getClosing(ticker):
+    # Get the closing price for the last 10 trading days
     stock = yf.Ticker(ticker)
     hist = stock.history(period='10d')
 
@@ -41,7 +43,20 @@ def getClosing(ticker):
     return closing_list
 
 stocks = ["TM", "HMC", "F", "GM", "TSLA"]
-stocks = np.array(stocks)
 
-plt.plot(stocks)
+tm_closing = np.array(getClosing("TM"))
+days = list(range(1, len(tm_closing)+1))
+
+plt.plot(days, tm_closing)
+
+# Get min/max for y axis
+prices = getClosing("TM")
+prices.sort()
+low_price = prices[0]
+high_price = prices[-1]
+
+plt.title("Closing Price for " + "TM")
+plt.xlabel("Days")
+plt.ylabel("Closing Price")
+plt.axis([1, 10, low_price*.99, high_price*1.01])
 plt.show()
