@@ -27,10 +27,21 @@ import yfinance as yf
 import numpy as np
 import matplotlib.pyplot as plt
 
-# yf.Tickers('tm hmc f gm tsla')
-tickers = ["TM"]
+# Function to gather stock information
+def getClosing(ticker):
+    stock = yf.Ticker(ticker)
+    hist = stock.history(period='10d')
 
-for ticker in tickers:
-    myticker = yf.Ticker(ticker)
-    history = myticker.history(start="2024-01-01", end="2024-01-10")
-    print(history)
+    closing_list = []
+
+    for price in hist['Close']:
+        closing_list.append(price)
+
+    print(closing_list)
+    return closing_list
+
+stocks = ["TM", "HMC", "F", "GM", "TSLA"]
+stocks = np.array(stocks)
+
+plt.plot(stocks)
+plt.show()
