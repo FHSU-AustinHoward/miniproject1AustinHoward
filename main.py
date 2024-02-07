@@ -27,11 +27,10 @@ import yfinance as yf
 import numpy as np
 import matplotlib.pyplot as plt
 
-# Lists to store selected stock tickers / closing price
-selected_tickers = ['TM', 'HMC', 'F', 'GM', 'TSLA']
-closing_prices = []
+# yf.Tickers('tm hmc f gm tsla')
+tickers = ["TM"]
 
-# Fetch ticker information and store it in lists
-for ticker in selected_tickers:
-    retrieved_stock_data = yf.download(ticker, period='10d')
-    print(retrieved_stock_data)
+for ticker in tickers:
+    myticker = yf.Ticker(ticker)
+    history = myticker.history(start="2024-01-01", end="2024-01-10")
+    print(history)
