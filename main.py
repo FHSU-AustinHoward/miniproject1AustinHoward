@@ -44,19 +44,21 @@ def getClosing(ticker):
 
 stocks = ["TM", "HMC", "F", "GM", "TSLA"]
 
-tm_closing = np.array(getClosing("TM"))
-days = list(range(1, len(tm_closing)+1))
+for stock in stocks:
 
-plt.plot(days, tm_closing)
+    stock_closing = np.array(getClosing(stock))
+    days = list(range(1, len(stock_closing)+1))
 
-# Get min/max for y axis
-prices = getClosing("TM")
-prices.sort()
-low_price = prices[0]
-high_price = prices[-1]
+    plt.plot(days, stock_closing)
 
-plt.title("Closing Price for " + "TM")
-plt.xlabel("Days")
-plt.ylabel("Closing Price")
-plt.axis([1, 10, low_price*.99, high_price*1.01])
-plt.show()
+    # Get min/max for y axis
+    prices = getClosing(stock)
+    prices.sort()
+    low_price = prices[0]
+    high_price = prices[-1]
+
+    plt.title("Closing Price for " + stock)
+    plt.xlabel("Days")
+    plt.ylabel("Closing Price")
+    plt.axis([1, 10, low_price*.99, high_price*1.01])
+    plt.show()
