@@ -66,12 +66,6 @@ def print_charts(stocks):
         stock_closing = np.array(get_closing(stock))
         days = list(range(1, len(stock_closing) + 1))
 
-        # Get min/max for y axis
-        prices = get_closing(stock)
-        prices.sort()
-        low_price = prices[0]
-        high_price = prices[-1]
-
         # Create the graph
         plt.plot(days, stock_closing)
 
@@ -79,11 +73,12 @@ def print_charts(stocks):
         plt.title("Closing Price for " + stock)
         plt.xlabel("Days")
         plt.ylabel("Closing Price")
-        plt.axis([1, 10, low_price * .99, high_price * 1.01])
+        plt.xticks(np.arange(1, len(stock_closing) + 1, step=1))
 
-        # Save the graph to the charts folder
+        # Save the graph to the charts folder and then clear it
         savefile = "charts/" + stock + ".png"
         plt.savefig(savefile)
+        plt.clf()
 
 
 # Main Function
