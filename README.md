@@ -39,7 +39,7 @@ Austin Howard
 ## Version History
 
 * 0.1
-    * Initial Release
+    * Initial release to complete the assignment
 
 ## License
 
