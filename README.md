@@ -2,11 +2,6 @@
 # Austin Howard
 # Mini Project 1
 
-
-# Project Title
-
-Simple overview of use/purpose.
-
 ## Description
 
 An in-depth paragraph about your project and overview of use.
@@ -20,7 +15,10 @@ An in-depth paragraph about your project and overview of use.
 * List pip install instructions.
 
 ### Pip install instructions
+In a terminal window, please type the following:
+```
 pip install -r requirements.txt
+```
 
 ### Installing
 
@@ -28,11 +26,9 @@ pip install -r requirements.txt
 * Any modifications needed to be made to files/folders
 
 ### Executing program
-
-* How to run the program
-* Step-by-step bullets
+In a terminal window, please type the following:
 ```
-code blocks for commands
+python main.py
 ```
 
 ## Help
