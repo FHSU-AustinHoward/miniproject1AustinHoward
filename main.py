@@ -3,10 +3,10 @@
 
 # COMPLETE - (5/5 points) Initial comments with your name, class and project at the top of your .py file.
 # COMPLETE - (5/5 points) Proper import of packages used.
-# INCOMPLETE - (20/20 points) Using an API of your choice (yfinance works), collect the closing price of 5 of your
+# COMPLETE - (20/20 points) Using an API of your choice (yfinance works), collect the closing price of 5 of your
 # favorite stock tickers for the last 10 trading days.
-# INCOMPLETE - (10/10 points) Store this information in a list that you will convert to a array in NumPy.
-# INCOMPLETE - (10/10 points) Plot these 5 graphs. Feel free to add as much information to the graphs as you like
+# COMPLETE - (10/10 points) Store this information in a list that you will convert to a array in NumPy.
+# COMPLETE - (10/10 points) Plot these 5 graphs. Feel free to add as much information to the graphs as you like
 # exploring the documentation for matplotlib. At minimum it just needs to show 10 data points.
 # INCOMPLETE - (10/10 points) Save these graphs in a folder called charts as PNG files. Do not upload these to your
 # project folder, the project should save these when it executes. You may want to add this folder to your .gitignore
@@ -26,7 +26,7 @@
 import yfinance as yf
 import numpy as np
 import matplotlib.pyplot as plt
-import copy
+from pathlib import Path
 
 # Function to gather stock information
 def getClosing(ticker):
@@ -41,6 +41,11 @@ def getClosing(ticker):
 
     print(closing_list)
     return closing_list
+
+try:
+    Path('charts').mkdir()
+except FileExistsError:
+    pass
 
 stocks = ["TM", "HMC", "F", "GM", "TSLA"]
 
@@ -61,4 +66,6 @@ for stock in stocks:
     plt.xlabel("Days")
     plt.ylabel("Closing Price")
     plt.axis([1, 10, low_price*.99, high_price*1.01])
-    plt.show()
+
+    savefile = "charts/" + stock + ".png"
+    plt.savefig(savefile)
