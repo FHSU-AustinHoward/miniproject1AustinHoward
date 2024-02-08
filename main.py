@@ -26,10 +26,14 @@ COMPLETE - (20/20 points) There should be a README.md file in your project that 
 import yfinance as yf
 import numpy as np
 import matplotlib.pyplot as plt
+import warnings
 from pathlib import Path
 
 
 def get_closing(ticker):
+    # Ignore the pesky pandas FutureWarning
+    warnings.simplefilter(action="ignore", category=FutureWarning)
+
     # Get the closing price for the last 10 trading days
     stock = yf.Ticker(ticker)
     hist = stock.history(period='10d')
@@ -58,10 +62,9 @@ def set_stocks():
 
 def print_charts(stocks):
     for stock in stocks:
+        # Get the day and closing price for each stock
         stock_closing = np.array(get_closing(stock))
         days = list(range(1, len(stock_closing) + 1))
-
-        plt.plot(days, stock_closing)
 
         # Get min/max for y axis
         prices = get_closing(stock)
@@ -69,11 +72,16 @@ def print_charts(stocks):
         low_price = prices[0]
         high_price = prices[-1]
 
+        # Create the graph
+        plt.plot(days, stock_closing)
+
+        # Format the graph, visually
         plt.title("Closing Price for " + stock)
         plt.xlabel("Days")
         plt.ylabel("Closing Price")
         plt.axis([1, 10, low_price * .99, high_price * 1.01])
 
+        # Save the graph to the charts folder
         savefile = "charts/" + stock + ".png"
         plt.savefig(savefile)
 
