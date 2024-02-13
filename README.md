@@ -30,13 +30,6 @@ In a terminal window, please type the following:
 python main.py
 ```
 
-## Help
-
-Any advise for common problems or issues.
-```
-command to run if program contains helper info
-```
-
 ## Authors
 
 Austin Howard - [Email](A_Howard4@mail.fhsu.edu)  
