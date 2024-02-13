@@ -51,7 +51,7 @@ def print_charts(stocks):
         plt.plot(days, stock_closing)
 
         # Format the graph, visually
-        plt.title("Closing Price for " + stock)
+        plt.title(f"Closing Price for {stock}")
         plt.xlabel("Days")
         plt.ylabel("Closing Price")
         plt.xticks(np.arange(1, len(stock_closing) + 1, step=1))
